@@ -1,0 +1,247 @@
+
+// Сброс стилей input
+@mixin app {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+	background-color: transparent;
+	font-family: $font_1;
+	font-size: $font_size_base;
+}
+
+// Input end
+
+
+// Flex styles
+
+@mixin flex-center {
+	justify-content: center;
+	display: flex;
+	align-items: center;
+}
+
+@mixin flex-col {
+	flex-direction: column;
+}
+
+@mixin flex-start {
+	justify-content: flex-start;
+	display: flex;
+	align-items: center;
+}
+
+@mixin flex-space {
+	justify-content: space-between;
+	display: flex;
+	align-items: center;
+}
+
+@mixin flex-end {
+	justify-content: flex-end;
+	display: flex;
+	align-items: center;
+}
+
+// End flex styles
+
+// Style default link
+
+
+@mixin link {
+	position: relative;
+	&:before {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		content: '';
+		border-bottom: .2rem solid $black;
+		transition: all .3s ease;
+		pointer-events: none;
+	}
+	&:hover {
+		&:before {
+			width: 100%;
+		}
+	}
+	&.active {
+		&:before {
+			width: 100%;
+		}
+	}
+}
+
+// End style link
+
+@mixin btn_standart {
+	position: relative;
+	display: inline-flex;
+	&:before {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		content: '';
+		background: $darkblue;
+		box-shadow: inset .1rem -.1rem 4rem rgba(8, 11, 23, 0.5);
+		border-radius: 2rem;
+		opacity: 0;
+		transition: all .5s ease;
+		visibility: hidden;
+		pointer-events: none;
+		@include z-index(el);
+	}
+	button {
+		background-color: $blue;
+		padding: 2.6rem 7rem;
+		font-size: $xs;
+		border-radius: 2rem;
+		width: 100%;
+		height: 100%;
+		transition: all .5s ease;
+		@include bp($point_4) {
+			font-size: $mobiles;
+			padding: 2rem 4rem;
+			border-radius: 1rem;
+		}
+	}
+	&:hover {
+		button {
+			background-color: $trans;
+		}
+		&:before {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+@mixin check {
+	label {
+		position: relative;
+		padding-left: 4.5rem;
+		cursor: pointer;
+		@include bp($point_4) {
+			font-size: 1.4rem!important;
+			display: block;
+		}
+		a {
+			@include bp($point_4) {
+				font-size: 1.4rem!important;
+			}
+		}
+		&:before {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+			width: 3rem;
+			height: 3rem;
+			background-color: #202431;
+			border-radius: 0.5rem;
+			content: '';
+			@include bp($point_4) {
+				width: 2.7rem;
+				height: 2.7rem;
+			}
+		}
+		&:after {
+			position: absolute;
+			top: 50%;
+			left: .5rem;
+			transform: translateY(-50%);
+			height: 1.4rem;
+			border-radius: 0.5rem;
+			content: '';
+			background-image: url('../../i/global/check.svg');
+			background-repeat: no-repeat;
+			background-size: 2rem 1.4rem;
+			background-position: center center;
+			transition: all .3s ease;
+			width: 2rem;
+			transform-origin: center;
+			opacity: 0;
+			visibility: hidden;
+			@include bp($point_4) {
+				width: 1.2rem;
+				height: 1.2rem;
+				left: .7rem;
+			}
+		}
+	}
+	input {
+		display: none;
+		&:checked  + label:after {
+			transform: translateY(-50%);
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+@mixin input {
+	input {
+		@include app;
+		background-color: #202431;
+		font-family: $font_1;
+		padding: 2.4rem 3rem;
+		border-radius: 1rem;
+		width: 100%;
+		@include bp($point_4) {
+			font-size: $mobiles;
+			padding: 2rem 3rem;
+		}
+	}
+}
+
+@mixin btn {
+	position: relative;
+	button, input {
+		@include app;
+		background-color: $blue;
+		padding: 2.3rem 4rem;
+		color: $white;
+		border-radius: 1rem;
+		font-size: $xs;
+		font-family: $font_2;
+		cursor: pointer;
+		width: 100%;
+		transition: all .3s ease;
+		@include bp($point_4) {
+			font-size: $mobiles;
+			padding: 2rem 4rem;
+		}
+	}
+	&:before {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		content: '';
+		background: $darkblue;
+		box-shadow: inset .1rem -.1rem 4rem rgba(8, 11, 23, 0.5);
+		border-radius: 1rem;
+		opacity: 0;
+		transition: all .3s ease;
+		visibility: hidden;
+		pointer-events: none;
+		@include z-index(el);
+	}
+	&:hover {
+		button, input {
+			background-color: $trans;
+		}
+		&:before {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+@mixin gradient {
+	background: radial-gradient(50% 50% at 50% 50%, rgba(0, 132, 255, 0.3) 0%, rgba(0, 132, 255, 0) 100%);
+	filter: blur(2.5rem);
+}

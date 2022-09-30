@@ -1,0 +1,109 @@
+//------------------------------------------------------------layout
+.footer {
+	width: 100%;
+	min-height: $footer;
+	flex: 0 0 auto;
+	will-change: transform;
+	position: relative;
+	background: linear-gradient(0deg, #202431, #202431), linear-gradient(32.78deg, rgba(16, 19, 30, 0.8) 2.82%, rgba(18, 24, 49, 0) 96.84%), #31343F;
+	box-shadow: .1rem 1.8rem 3rem rgba(8, 11, 23, 0.56);
+	@include bp($point_4) {
+		font-size: 1.4rem;
+	}
+}
+
+// Footer main
+
+
+.footer {
+}
+.section_in {
+}
+.footer_main_w {
+	@include flex-start;
+	padding: 2.3rem 0;
+	@include bp($point_2) {
+		flex-direction: column;
+	}
+}
+.footer_main_left {
+	@include flex-start;
+	margin-right: 22.9rem;
+	@include bp($point_2) {
+		margin: 0 0 3rem 0;
+		width: 100%;
+		justify-content: space-between;
+	}
+	// @include bp($point_4) {
+	// 	flex-wrap: wrap;
+	// }
+}
+.footer_logo {
+	width: 22.3rem;
+	margin-right: 6rem;
+	transition: all .3s ease;
+	@include bp($point_4) {
+		width: 6rem;
+	}
+	&:hover {
+		opacity: .7;
+	}
+}
+.cover_img {
+}
+.footer_copyright {
+}
+.footer_main_right {
+	@include flex-start;
+	@include bp($point_2) {
+		justify-content: space-between;
+		width: 100%;
+	}
+	@include bp($point_4) {
+		flex-direction: column;
+	}
+}
+.footer_policy {
+	margin-right: 6.6rem;
+	@include bp($point_2) {
+		margin-right: 2rem;
+	}
+	@include bp($point_4) {
+		margin: 0 0 1rem 0;
+	}
+	a {
+		border-bottom: .1rem solid $white;
+		transition: all .3s ease;
+		&:hover {
+			border-bottom: .1rem solid $trans;
+		}
+	}
+}
+.footer_arkada {
+	a {
+		@include flex-start;
+		&:hover {
+			.footer_arkada_logo {
+				animation: logoArkada .5s ease infinite alternate;
+			}
+		}
+		p {
+			margin-right: 1.5rem;
+		}
+	}
+}
+.footer_arkada_logo {
+	width: 3.3rem;
+	@include flex-center;
+	@include bp($point_4) {
+		width: 2.5rem;
+	}
+}
+@keyframes logoArkada {
+	0% {
+		transform: rotateY(0);
+	}
+	100% {
+		transform: rotateY(180deg);
+	}
+}

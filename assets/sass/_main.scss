@@ -1,0 +1,55 @@
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+h1 {
+	font-size: $xxl;
+	@include bp($point_4) {
+		font-size: $l;
+	}
+}
+// End
+h2, h3, h4, h5, h6 {
+	font-size: $xl;
+	@include bp($point_4) {
+		font-size: 2.6rem;
+	}
+}
+// End
+
+button {
+	cursor: pointer;
+	color: $white;
+}
+
+.btn_standart {
+	@include btn_standart;
+}
+
+.txt_format {
+	p, ul, ol, span {
+		&:not(:last-child) {
+			margin-bottom: 2rem;
+		}
+	}
+	li {
+		padding-left: 2rem;
+		position: relative;
+		font-size: $mobiles ;
+		&:before {
+			content: '-';
+			position: absolute;
+			left: 0;
+		}
+		&:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+}
+
+p {
+	font-weight: 400;
+}

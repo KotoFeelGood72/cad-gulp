@@ -1,0 +1,111 @@
+//------------------------------------------------------------layout
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: $header;
+	width: 100%;
+	will-change: transform;
+	@include z-index(popup);
+	font-size: $xxs;
+	background-color: $dark;
+}
+
+// Header main
+
+.header {
+}
+.section_in {
+}
+.header_main {
+	@include flex-space;
+	padding: 1.5rem 0;
+}
+.header_logo {
+	width: 22.3rem;
+	margin-right: 6.7rem;
+	transition: all .3s ease;
+	@include bp($point_2) {
+		width: 6rem;
+	}
+	&:hover {
+		opacity: .7;
+	}
+}
+.cover_img {
+}
+.header_menu {
+	margin-right: 7.4rem;
+	@include bp($point_2) {
+		display: none
+	}
+	ul {
+		@include flex-start;
+		li {
+			&:not(:last-child) {
+				margin-right: 5.5rem;
+			}
+			a {
+				transition: all .3s ease;
+				&:hover, &.active {
+					color: $blue
+				}
+			}
+		}
+	}
+}
+.header_phone {
+	@include bp($point_4) {
+		margin-right: 3rem;
+	}
+	a {
+		@include flex-start;
+		transition: all .3s ease;
+		@include bp($point_4) {
+			font-size: $mobiles;
+		}
+			&:hover, &.active {
+				color: $blue
+			}
+	}
+}
+.header_phone_icon {
+	margin-right: 1.3rem;
+	width: 1.6rem;
+	@include bp($point_4) {
+		display: none;
+	}
+}
+.icon {
+}
+.icon-phone {
+}
+
+.header_burger {
+	display: none;
+	@include bp($point_2) {
+		display: block;
+		width: 2.5rem;
+		height: 2rem;
+		position: relative;
+	}
+	li {
+		width: 100%;
+		border-bottom: .2rem solid $white;
+		position: absolute;
+		&:nth-child(1) {
+			top: 0;
+			left: 0;
+		}
+		&:nth-child(2) {
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+			width: 75%;
+		}
+		&:nth-child(3) {
+			bottom: 0;
+			left: 0;
+		}
+	}
+}

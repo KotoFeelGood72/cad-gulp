@@ -1,0 +1,238 @@
+extends _layout
+
+block vars
+	- array = {body_class:'', layout_mod:'', sub_keywords:'', title_inner:'HOME'}
+block content_block
+	section.hero
+		.hero_shape 
+			+pic({
+				img: 'i/hero_shape',
+				png: true,
+			}) 
+		.section_in 
+			.hero_main 
+				.hero_content 
+					h1 Кадастровые и геодезические работы
+					.hero_content_txt 
+						p Услуги по землеустроительству, оформление документов. Работаем по Ставропольскому краю.
+					.hero_btn.btn_standart.trigger_call 
+						button 
+							p Оставить заявку
+							.btn_blur
+				.hero_img 
+					+pic({img: 'i/hero', png: true,})
+	section.help 
+		.section_in 
+			.help_main 
+				.help_title
+					h2 Поможем решить любые задачи
+				.help_content.txt_format 
+					p В составе компании ЗемГеоАПБ трудятся аттестованные сотрудники: сертифицированные кадастровые инженеры, опытные проектировщики, геодезисты, юристы и профессионалы других направлений, имеющие все необходимые допуски и сертификаты. 
+					p Мы выполняем любые кадастровые и геодезические работы и будем рады помочь решить ваш вопрос!
+	section.service 
+		.section_in 
+			.service_main 
+				h2 Наши услуги
+				ul.service_grid 
+					-for(i = 0; i < 7; i++)
+						if i === 0
+							li.service_item_w.active
+								.popupService_trigger(data-path=`service${i}`)
+									.service_item_img 
+										+pic({
+											img: `i/service/service_${i}`
+										})
+									article 
+										a(href="#")
+										.service_item
+											.service_item_title 
+												p Межевание
+						else 
+							li.service_item_w
+								.popupService_trigger(data-path=`service${i}`)
+									.service_item_img 
+										+pic({
+											img: `i/service/service_${i}`
+										})
+									article 
+										a(href="#")
+										.service_item
+											.service_item_title 
+												p Межевание
+	section.services 
+		.section_in 
+			.services_main 
+				h3 Преимущества
+				ul.services_grid 
+					-for(i = 0; i < 4; i++)
+						li.services_item 
+							.services_item_icon 
+								+pic({img: `i/service/services_${i}`, png: true})
+							.services_item_content 
+								p Скорость
+								span Гарантируем соблюдение поставленных сроков.
+	section.about
+		.about_bg_shape 
+			+pic({
+				img: 'i/about_bg',
+				png: true,
+			}) 
+		.section_in 
+			.about_main 
+				ul.about_img_list
+					-for(i = 0; i < 2; i++)
+						li.about_img_item 
+							+pic({img: `i/abouts_${i}`, png: true,})
+				.about_content 
+					h2 Пенсионерам и инвалидам — скидка 10% на все виды работ.
+					.about_content_txt.txt_format 
+						p СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ ПРИ ГРУПОВОМ ЗАКАЗЕ!
+						p Межевания или изготовления техплана от 2 до 5 участков или домов - СКИДКА 10%. Межевания или изготовления техплана от 6 до 10 участков или домов - СКИДКА 30%
+						p При заказе техплана на второй объект на одном участке (например, для бани или беседки) - СКИДКА 20%
+	section.step 
+		.section_in 
+			.step_main_w 
+				.step_head
+					.step_title 
+						h3 Этапы работы
+					.step_nav.global_nav 
+						.step_prev.global_prev.global_nav_btn 
+							button 
+								+icon('prev')
+						.step_next.global_next.global_nav_btn
+							button 
+								+icon('prev')
+				.step_slider_w 
+					.step_slider.swiper 
+						.swiper-wrapper
+							-for(i = 1; i < 6; i++) 
+								.swiper-slide 
+									.step_slide 
+										.step_slide_number=`0${i}`
+										.step_slide_title 
+											h4 Обработка заявки
+										.step_slide_txt 
+											p Изучаем  вашу ситуацию и анализируем документы. Кадастровый инженер проводит бесплатную консультацию и предлагает индивидуальное решение.
+	section.action 
+		.section_in 
+			.action_main 
+				.action_head 
+					h5 Сделайте заказ
+					p Поля со свездочкой обязательны для заполнения
+				.action_form_w 
+					.action_form_head 
+						ul.action_check_list 
+							-for(i = 0; i < 7; i++)
+								- var checkTitle = ['Межевой план', 'Акт обследования', 'Перевод садового дома в жилой ', 'Схема расположения участка ', 'Технический план', 'Проектные работы', 'Разрешение на строительство']
+								li.action_check_item.check_global 
+									input(type="checkbox" id=`action_${i}` name=`action_${i}`)
+									label(for=`action_${i}`)=checkTitle[i]
+					.action_form_row 
+						.action_col_left 
+							.action_input
+								input(type="text" placeholder="Ваше имя*")
+							.action_input
+								input(type="tel" placeholder="Ваш телефон*")
+							.action_input
+								input(type="email" placeholder="Электронная почта")
+						.action_col_right
+							.action_input_textarea 
+								textarea(class="action_textarea" name="quote" placeholder="Примечание: здесь вы можете указать кадастровый номер и другую информацию")
+					.action_form_bottom 
+						.action_bottomCol_left 
+							.action_input_btn.btn_submit 
+								input(type="submit" value="Отправить данные")
+						.action_bottomCol_right
+							.action_input_check.check_global 
+								input(type="checkbox" name="mainCheck" id="mainCheck")
+								label(for="mainCheck")!='Отправляя информацию, вы соглашаетесь c <a target="_blank" href="#">политикой конфиденциальности.</a>'
+	section.document 
+		.section_in 
+			.document_main 
+				h5 Документы
+				.document_slider_w 
+					.document_slider.swiper 
+						.swiper-wrapper
+							-for(i = 0; i < 6; i++)
+								.swiper-slide 
+									.document_slide
+										.document_slide_img
+											a(href="i/document.jpg" data-fancybox)  
+												+pic({img: 'i/document'})
+					.document_slider_pug.global_pug
+	section.reviews 
+		.section_in 
+			.reviews_main_w
+				h5 Отзывы клиентов
+				.reviews_slider_w
+					.rev_nav.global_nav 
+						.rev_prev.global_prev.global_nav_btn 
+							button 
+								+icon('prev')
+						.rev_next.global_next.global_nav_btn
+							button 
+								+icon('prev')
+					.reviews_slider.swiper 
+						.swiper-wrapper
+							-for(i = 0; i < 6; i++) 
+								.swiper-slide 
+									.reviews_slide 
+										.reviews_slide_img 
+											+pic({img: 'i/reviews', png: true,})
+										.reviews_slide_content 
+											.reviews_name 
+												p Имя фамилия
+											.reviews_content_txt.txt_format 
+												p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+												p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+												ul 
+													li Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, ratione hic labore libero maxime explicabo doloremque commodi nesciunt dicta, tempora harum? Fuga, quae ipsum atque deleniti pariatur alias veritatis eligendi.
+													li Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore mollitia, odit cumque culpa et fugit accusantium, tenetur ea repellat corporis ad nisi dignissimos dolorem voluptatem sint cum autem repellendus optio!
+													li Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore vero velit magnam distinctio omnis laborum ratione et illum. Sequi animi aperiam vero aut ipsum facilis nisi mollitia, ullam eaque ut!
+												p Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, at quibusdam. Rem, recusandae magni! Fugiat fuga itaque ad, nesciunt rem maiores ipsum repellendus possimus eos quo magni temporibus, impedit suscipit.
+											.reviews_date
+												.reviews_date_icon 
+													+icon('date')
+												p 31.10.2022
+					.reviews_slider_pug.global_pug
+	section.contacts 
+		.section_in 
+			.contacts_main 
+				.contacts_map 
+					#map 
+				.contacts_info 
+					h6 Нашии Контакты
+					ul.contacts_info_list
+						-
+							var contacts = [
+								{
+									link: '+7 (000) 000 00 00',
+									icon: 'mobile'
+								},
+								{
+									link: 'mail@mail.ru',
+									icon: 'envelope'
+								},
+								{
+									txt: 'г. Железноводск, ул. Московская 17',
+									icon: 'marker'
+								},
+							]
+						each item in contacts 
+							li.contacts_info_item
+								if item.link
+									a(href="#")
+										.contacts_info_icon 
+											+icon(item.icon)
+										p=item.link
+								else 
+									span
+										.contacts_info_icon 
+											+icon(item.icon)
+										p=item.txt
+					ul.contacts_social_list 
+						each item in ['tg', 'wp']
+							li 
+								a(href="#")
+									+icon(item) 
+							

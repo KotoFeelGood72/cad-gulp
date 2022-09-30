@@ -1,0 +1,109 @@
+// Popup form
+.popup_form.global_form 
+	.popup_form_bg.call_closer.global_bg 
+	.popup_form_main.global_form_main 
+		.popup_form_close.global_close.call_closer
+			button 
+				+icon('close')
+		.popup_form_head 
+			h3 Форма заявки
+		.popup_form_form 
+			.popup_form_input 
+				input(type="text" placeholder="Ваше имя")
+			.popup_form_input 
+				input(type="text" placeholder="Ваш телефон")
+			.popup_form_check_input
+				input(type="checkbox", name="work" id="work")
+				label(for="work")!='Отправляя информацию, вы соглашаетесь c <a target="_blank" href="#">политикой конфиденциальности.</a>'
+			.popup_form_btn.btn_submit 
+				input(type="submit" value="Отправить данные")
+
+// Burger
+.burger
+	.burger_bg.global_bg.burger_closer
+	.burger_main
+		.burger_close.global_close.burger_closer 
+			button 
+				+icon('close') 
+		.burger_logo 
+			a(href="#")
+				+pic({
+					img: 'i/global/logo',
+					png: true,
+					media: 480,
+					img_mob: 'i/mobile_logo'
+				})
+		.burger_menu.global_menu 
+			nav 
+				ul 
+					each item in ['Услуги', 'Преимущества', 'Этапы работ', 'Документы', 'Отзывы', 'Контакты']
+						li 
+							a(href="#")=item 
+		ul.contacts__info_list 
+			-
+				var contacts = [
+					{
+						link: '+7 (985) 968-65-63',
+						icon: 'mobile'
+					},
+					{
+						link: 'mail@mail.ru',
+						icon: 'envelope'
+					},
+					{
+						txt: 'г. Железноводск, ул. Московская 17',
+						icon: 'marker'
+					},
+				]
+			each item in contacts 
+				if item.link 
+					li.contacts_item 
+						a(href="#")
+							.contacts_item_icon 
+								+icon(item.icon)
+							p=item.link
+				else 
+					li.contacts_item 
+						.contacts_item_icon 
+							+icon(item.icon)
+						p=item.txt
+		ul.contacts_social_list 
+			each item in ['tg', 'wp']
+				li 
+					a(href="#")
+						+icon(item)
+
+// Service popup
+
+-for(i = 0; i < 7; i++)
+	.servicePopup.global_form(data-target=`service${i}`)
+		.servicePopup_bg.global_bg.service_closer
+		.servicePopup_main_w.global_form_main
+			.servicePopup_main 
+				.servicePopup_close.service_closer.global_close
+					button 
+						+icon('close')
+				.servicePopup_title 
+					h3=`Межевание участка ${i}`
+				.servicePopup_content.txt_format 
+					p Межевание земельного участка – это ряд кадастровых работ, производимых для точного определения площади и границ участка, координат его поворотных точек. Межевание земельных участков выполняют аттестованные кадастровые инженеры. Полученные сведения вносятся в Государственный реестр.
+					p Виды и методы межевания:
+					p Объединение
+					ul 
+						li Раздел
+						li Перераспределение
+						li Выдел
+						li Образование земельного участка из государственных или муниципальных земель
+						li Исправление кадастровой ошибки
+						li Уточнение границ
+						li Вынос границ в натуру
+					p Межевание, в основном, проводится по стандартной схеме и в зависимости от его вида некоторые пункты упускаются:
+					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum consectetur, velit ad eligendi dolore animi sit unde temporibus, officia consequuntur numquam asperiores, distinctio recusandae illum voluptate aut nostrum repudiandae maxime.
+					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam nihil enim totam cumque id! Sunt ut voluptatibus maiores odio aliquid deserunt, esse cumque dolore error maxime exercitationem autem? Laudantium, tempore?
+					p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur enim corporis ab omnis optio, aspernatur doloremque quasi eveniet a commodi, animi iste possimus debitis rerum autem voluptatibus ipsum! Eveniet, nam.
+					ul 
+						li Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum dolorem quis sapiente similique hic ullam minima sint? Harum adipisci beatae sit rerum error animi voluptate, dolore ducimus, officiis, maxime veritatis.
+						li Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis animi dignissimos aspernatur qui consequatur omnis illo tenetur aliquam ducimus. Recusandae cumque animi, alias repellendus laudantium facere nostrum odit commodi voluptatem!
+						li Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit debitis obcaecati, voluptatibus labore aspernatur quis praesentium tenetur dolore placeat modi provident saepe numquam possimus voluptates aliquid temporibus laudantium laborum dolorem!
+				.servicePopup_btn 
+					button(id=`submitService${i}`) Оставить заявку

@@ -1,0 +1,24 @@
+header.header
+	.section_in 
+		.header_main 
+			.header_logo 
+				a(href="#")
+					+pic({
+						img: 'i/global/logo',
+						media: 1024,
+						img_mob: 'i/mobile_logo'
+					})
+			.header_menu.global_menu 
+				nav 
+					ul 
+						each item in ['Услуги', 'Преимущества', 'Этапы работ', 'Документы', 'Отзывы', 'Контакты']
+							li 
+								a(href="#")=item 
+			.header_phone 
+				a(href="#")
+					.header_phone_icon 
+						+icon('phone')
+					p +7 (985) 968-65-63
+			ul.header_burger
+				-for(i = 0; i < 3; i++) 
+					li.line_burger
