@@ -43,6 +43,7 @@ $(window).on('load', function () {
 		topCart([44, 54]);
 	} else {
 		topCart([44, 54]);
+		paralax();
 	}
 });
 
@@ -402,6 +403,46 @@ $(window).scroll(function(){
 
 
 
+
+let elParalax = document.querySelectorAll('.paralaxItem');
+for (let i = 0; i < elParalax.length; i++){
+    window.addEventListener('mousemove', function(e) { 
+        let x = e.clientX / window.innerWidth;
+        let y = e.clientY / window.innerHeight;     
+        elParalax[i].style.transform = 'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)';
+    });    
+}
+
+$(window).on("scroll", function () {
+	var scrolled = $(this).scrollTop();
+	if( scrolled > 107 ) {
+			$('.header').addClass('fixed');
+	}   
+	if( scrolled <= 107 ) {     
+			$('.header').removeClass('fixed');
+	}
+});
+
+
+function paralax(bottom = false, start = '-=50% top', end = 'bottom') {
+	const paralaxWrapper = Array.from(document.querySelectorAll('.paralaxSection')).map(function(el) {
+		const arr = Array.from(el.querySelectorAll('.paralaxEl')).map(function (item) {
+			const tl = gsap.timeline();
+			ScrollTrigger.create({
+				animation: tl,
+				trigger: el,
+				start: start,
+				end: end,
+				scrub: 2,
+				ease: 'none',
+				// markers: true,
+			})
+			tl.to(item, {
+				y: (target) => ((bottom ? el.offsetHeight : false) || -el.offsetHeight) * (item.dataset.ratio || 0.2),
+			});
+		})
+	});
+}
 
 
 

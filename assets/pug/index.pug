@@ -19,7 +19,7 @@ block content_block
 						button 
 							p Оставить заявку
 							.btn_blur
-				.hero_img 
+				.hero_img.paralaxItem 
 					+pic({img: 'i/hero', png: true,})
 	section.help 
 		.section_in 
@@ -71,7 +71,7 @@ block content_block
 							.services_item_content 
 								p Скорость
 								span Гарантируем соблюдение поставленных сроков.
-	section.about
+	section.about.paralaxSection
 		.about_bg_shape 
 			+pic({
 				img: 'i/about_bg',
@@ -81,7 +81,7 @@ block content_block
 			.about_main 
 				ul.about_img_list
 					-for(i = 0; i < 2; i++)
-						li.about_img_item 
+						li.about_img_item.paralaxEl(data-ration="0.1") 
 							+pic({img: `i/abouts_${i}`, png: true,})
 				.about_content 
 					h2 Пенсионерам и инвалидам — скидка 10% на все виды работ.

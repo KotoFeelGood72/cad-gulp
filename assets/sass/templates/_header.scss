@@ -8,7 +8,10 @@
 	will-change: transform;
 	@include z-index(popup);
 	font-size: $xxs;
-	background-color: $dark;
+	transition: all .3s ease;
+	&.fixed {
+		background-color: $dark;
+	}
 }
 
 // Header main
