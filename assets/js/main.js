@@ -11,10 +11,9 @@ let $body,
 	mediaPoint4 = 320,
 	devStatus = window.productionStatus === 'development';
 	const win = document.body
-
-
-$(document).ready(function ($) {
-	$body = $('body');
+	
+	$(document).ready(function ($) {
+		$body = $('body');
 
 	// popupServiceVisible();
 });
@@ -251,12 +250,11 @@ const reviewsSlider = new Swiper('.reviews_slider', {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
-	// Service popup variable
-	const popupService = document.querySelectorAll('.servicePopup');
+	
 	const popupServiceCloser = document.querySelectorAll('.service_closer')
 	const popupServiceTrigger = document.querySelectorAll('.popupService_trigger')
 	const btnService = document.querySelectorAll('.servicePopup_btn')
+	// Service popup variable
 
 	// End service popup variable
 
@@ -294,24 +292,20 @@ document.addEventListener('DOMContentLoaded', () => {
 	// End call function	
 
 
-	popupServiceTrigger.forEach((el) => {
-		el.addEventListener('click', (e) => {
-			let path = e.currentTarget.getAttribute('data-path');
-			console.log(path)
-			popupService.forEach((el) => {
-				el.classList.remove('active');
-			});
-			document.querySelector(`[data-target="${path}"]`).classList.add('active');
-			});
-	});
+	// popupServiceTrigger.forEach((el) => {
+	// 	const popupService = document.querySelector('.servicePopup');
+	// 	el.addEventListener('click', (e) => {
+	// 		visiblePopupService(popupService)
+	// 		});
+	// });
 
 	popupServiceCloser.forEach((item) => {
 		item.addEventListener('click', (e) => {
-				popupService.forEach((el) => {
-					el.classList.remove('active');
-				});
+			const popupServices = document.querySelector('.servicePopup');
+			popupServices.classList.remove('active');
 		});
 	})
+
 
 	btnService.forEach((item) => {
 		item.addEventListener('click', (e) => {
@@ -345,6 +339,8 @@ function visiblePopup(popupCalls, trigger) {
 	
 }
 
+
+
 function disablePopup(popupCalls, trigger, submit) {
 	if(trigger) {
 		Array.from(trigger).map((item) => {
@@ -365,6 +361,12 @@ function disablePopup(popupCalls, trigger, submit) {
 			})
 		})
 	} 
+}
+
+function visiblePopupService(popups) {
+	popups.classList.add('active');
+	win.style.overflow = "";
+	win.style.paddingRight = ""; 
 }
 
 
@@ -435,7 +437,6 @@ function paralax(bottom = false, start = '-=50% top', end = 'bottom') {
 				end: end,
 				scrub: 2,
 				ease: 'none',
-				// markers: true,
 			})
 			tl.to(item, {
 				y: (target) => ((bottom ? el.offsetHeight : false) || -el.offsetHeight) * (item.dataset.ratio || 0.2),

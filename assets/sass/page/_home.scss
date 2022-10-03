@@ -230,6 +230,7 @@
 	&:before {
 		content: '0' counter(li);
 		width: 6.5rem;
+		min-width: 6.5rem;
 		height: 6.5rem;
 		@include flex-center;
 		color: $white;
