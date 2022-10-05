@@ -38,10 +38,14 @@ $(window).on('load', function () {
 	loadFunc();
 	accardionHorizontal();
 	if(windowWidth < mediaPoint1) {
-		// burgerMobile();
-		topCart([44, 54]);
+		if($('.contacts_map')[0]) {
+			topCart([44, 54]);
+
+		}
 	} else {
-		topCart([44, 54]);
+		if($('.contacts_map')[0]) {
+			topCart([44, 54]);
+		}
 		paralax();
 	}
 });
@@ -253,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 	const popupServiceCloser = document.querySelectorAll('.service_closer')
 	const popupServiceTrigger = document.querySelectorAll('.popupService_trigger')
-	const btnService = document.querySelectorAll('.servicePopup_btn')
+	const btnService = document.querySelector('.servicePopup_btn')
 	// Service popup variable
 
 	// End service popup variable
@@ -307,16 +311,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 
-	btnService.forEach((item) => {
-		item.addEventListener('click', (e) => {
-				popupService.forEach((el) => {
-					el.classList.remove('active');
-				});
+		btnService.addEventListener('click', () => {
+			popupService.classList.remove('active');
 				setTimeout(() => {
 					visiblePopup(popupCall)
 				}, 200)
 		});
-	})
 })
 
 
